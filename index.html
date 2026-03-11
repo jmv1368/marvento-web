@@ -4,580 +4,161 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marvento Vermut</title>
+  <meta name="description" content="Marvento Vermut. Aperitivo argentino inspirado en la tradición italiana y el Atlántico." />
   <style>
     :root{
-      --navy:#0f3142;
-      --cream:#f4eedf;
-      --sand:#e8dfc8;
-      --rosso:#e96a5a;
-      --bianco:#d5a63b;
+      --cream:#eedbb1;
+      --navy:#002a39;
+      --rosso:#ed5240;
+      --bianco:#d59a2c;
+      --paper:#f5ecd3;
       --text:#17313d;
-      --muted:#5b6a72;
-      --white:#ffffff;
-      --border:rgba(15,49,66,.12);
+      --muted:#4b5d66;
+      --border:rgba(0,42,57,.13);
+      --shadow:0 24px 60px rgba(0,42,57,.12);
+      --radius-xl:34px;
+      --radius-lg:26px;
     }
 
     *{box-sizing:border-box}
-
-    html{
-      scroll-behavior:smooth;
-    }
-
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family: Arial, Helvetica, sans-serif;
-      background:var(--cream);
+      background:linear-gradient(180deg,#f7efda 0%,#f2e5c7 100%);
       color:var(--text);
     }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    .container{
-      width:min(1120px, calc(100% - 32px));
-      margin:0 auto;
-    }
+    .container{width:min(1180px, calc(100% - 32px));margin:0 auto}
 
     .topbar{
-      position:sticky;
-      top:0;
-      z-index:20;
-      background:rgba(244,238,223,.94);
-      backdrop-filter: blur(10px);
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(14px);
+      background:rgba(247,239,218,.88);
       border-bottom:1px solid var(--border);
     }
-
     .topbar-inner{
-      min-height:76px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
+      min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px;
     }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:700;
-      letter-spacing:.04em;
+    .brand-lockup{display:flex;align-items:center;gap:14px}
+    .brand-lockup img{height:52px;width:auto}
+    .brand-lockup small{
+      display:block;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--navy);opacity:.8
     }
+    .nav{display:flex;gap:24px;font-size:14px;color:var(--muted)}
+    .nav a:hover{color:var(--navy)}
 
-    .brand-mark{
-      width:42px;
-      height:42px;
-      border-radius:10px;
-      background:
-        linear-gradient(135deg, var(--navy) 25%, transparent 25%) -8px 0/16px 16px,
-        linear-gradient(225deg, var(--navy) 25%, transparent 25%) -8px 0/16px 16px,
-        linear-gradient(315deg, var(--navy) 25%, transparent 25%) 0px 0/16px 16px,
-        linear-gradient(45deg, var(--navy) 25%, transparent 25%) 0px 0/16px 16px,
-        var(--sand);
-      border:1px solid rgba(15,49,66,.15);
-    }
-
-    .nav{
-      display:flex;
-      gap:22px;
-      font-size:14px;
-      color:var(--muted);
-    }
-
-    .nav a:hover{
-      color:var(--navy);
-    }
-
-    .hero{
-      padding:84px 0 56px;
-      position:relative;
-      overflow:hidden;
-    }
-
+    .hero{padding:60px 0 56px;position:relative;overflow:hidden}
     .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
+      content:"";position:absolute;inset:0;
       background:
-        radial-gradient(circle at 15% 20%, rgba(233,106,90,.10), transparent 28%),
-        radial-gradient(circle at 85% 10%, rgba(213,166,59,.12), transparent 30%);
+        radial-gradient(circle at 10% 10%, rgba(237,82,64,.12), transparent 20%),
+        radial-gradient(circle at 90% 16%, rgba(213,154,44,.16), transparent 22%),
+        radial-gradient(circle at 50% 100%, rgba(0,42,57,.07), transparent 35%);
       pointer-events:none;
     }
-
-    .hero-grid{
-      position:relative;
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:42px;
-      align-items:center;
-    }
-
+    .hero-grid{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:34px;align-items:center}
     .eyebrow{
       display:inline-block;
-      font-size:12px;
-      letter-spacing:.28em;
-      text-transform:uppercase;
-      color:var(--navy);
-      margin-bottom:18px;
+      font-size:12px;letter-spacing:.30em;text-transform:uppercase;color:var(--navy);margin-bottom:16px;font-weight:700
     }
-
-    h1,h2,h3,p{
-      margin:0;
-    }
-
-    h1{
-      font-size:64px;
-      line-height:1.02;
-      max-width:680px;
-    }
-
-    .hero p{
-      margin-top:22px;
-      max-width:620px;
-      font-size:18px;
-      line-height:1.75;
-      color:var(--muted);
-    }
-
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-top:32px;
-    }
-
+    h1,h2,h3,p{margin:0}
+    h1{font-size:clamp(42px,6vw,78px);line-height:.98;max-width:650px}
+    .hero-copy p{margin-top:22px;max-width:610px;font-size:18px;line-height:1.78;color:var(--muted)}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
     .btn{
-      display:inline-block;
-      padding:14px 22px;
-      border-radius:999px;
-      font-size:14px;
-      font-weight:700;
-      border:1px solid var(--navy);
-      transition:.2s ease;
+      border-radius:999px;padding:14px 22px;border:1px solid var(--navy);font-size:14px;font-weight:700;
+      transition:.2s ease;display:inline-flex;align-items:center;justify-content:center
     }
+    .btn.primary{background:var(--navy);color:white}
+    .btn.primary:hover{opacity:.92}
+    .btn.secondary{background:transparent;color:var(--navy)}
+    .btn.secondary:hover{background:var(--navy);color:white}
 
-    .btn-primary{
-      background:var(--navy);
-      color:var(--white);
+    .hero-visual{
+      background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.18));
+      border:1px solid var(--border);border-radius:var(--radius-xl);box-shadow:var(--shadow);
+      padding:18px;position:relative
     }
-
-    .btn-primary:hover{
-      opacity:.92;
+    .hero-visual::after{
+      content:"";position:absolute;inset:auto 22px 20px 22px;height:32px;border-radius:50%;
+      filter:blur(18px);background:rgba(0,42,57,.18);z-index:0
     }
+    .hero-visual img{position:relative;z-index:1;width:100%;border-radius:24px;background:#ececec}
 
-    .btn-secondary{
-      color:var(--navy);
-      background:transparent;
-    }
+    .section{padding:86px 0}
+    .section.alt{background:rgba(255,255,255,.35);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .section-head{max-width:760px;margin-bottom:32px}
+    h2{font-size:clamp(30px,4.4vw,48px);line-height:1.06;margin-top:10px}
+    .section-head p{margin-top:18px;font-size:17px;line-height:1.82;color:var(--muted)}
 
-    .btn-secondary:hover{
-      background:var(--navy);
-      color:var(--white);
-    }
-
-    .hero-card{
-      background:linear-gradient(180deg, #efe5cf 0%, #e6d9b8 100%);
-      border:1px solid var(--border);
-      border-radius:32px;
-      padding:28px;
-      box-shadow:0 20px 60px rgba(15,49,66,.10);
-      min-height:520px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 80% 15%, rgba(233,106,90,.18), transparent 22%),
-        radial-gradient(circle at 20% 75%, rgba(15,49,66,.10), transparent 24%);
-      pointer-events:none;
-    }
-
-    .wave-art{
-      position:relative;
-      border-radius:24px;
-      border:1px solid rgba(15,49,66,.10);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0)),
-        linear-gradient(180deg, #f0e5c8 0 34%, #123547 34% 100%);
-      height:420px;
-      overflow:hidden;
-      display:flex;
-      align-items:flex-end;
-      justify-content:center;
-    }
-
-    .wave-art::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 70% 24%, rgba(255,255,255,.6) 0 3%, transparent 4%),
-        radial-gradient(circle at 60% 30%, rgba(255,255,255,.16) 0 18%, transparent 19%);
-      opacity:.55;
-    }
-
-    .bottles{
-      position:relative;
-      z-index:2;
-      width:100%;
-      display:flex;
-      justify-content:center;
-      align-items:flex-end;
-      gap:34px;
-      padding-bottom:28px;
-    }
-
-    .bottle{
-      width:126px;
-      height:318px;
-      border-radius:58px 58px 22px 22px;
-      position:relative;
-      box-shadow:0 18px 30px rgba(0,0,0,.18);
-      background:linear-gradient(180deg, #8b5a20 0%, #7b4718 35%, #5d2f10 100%);
-    }
-
-    .bottle::before{
-      content:"";
-      position:absolute;
-      top:-34px;
-      left:34px;
-      width:58px;
-      height:54px;
-      border-radius:18px 18px 10px 10px;
-      background:inherit;
-    }
-
-    .cap{
-      position:absolute;
-      top:-48px;
-      left:36px;
-      width:54px;
-      height:18px;
-      border-radius:10px 10px 4px 4px;
-    }
-
-    .cap-bianco{ background:var(--bianco); }
-    .cap-rosso{ background:var(--rosso); }
-
-    .label{
-      position:absolute;
-      left:14px;
-      right:14px;
-      bottom:52px;
-      height:118px;
-      border-radius:8px;
-      overflow:hidden;
-      border:1px solid rgba(0,0,0,.15);
-      background:#efe5c8;
-    }
-
-    .label-top{
-      height:30px;
-      display:flex;
-      align-items:center;
-      padding:0 10px;
-      font-size:13px;
-      font-weight:800;
-      color:var(--navy);
-      background:#efe5c8;
-    }
-
-    .label-main{
-      display:flex;
-      height:88px;
-    }
-
-    .label-wave{
-      flex:1;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0)),
-        linear-gradient(180deg, #efe5c8 0 34%, #123547 34% 100%);
-    }
-
-    .label-side{
-      width:26px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      writing-mode:vertical-rl;
-      transform:rotate(180deg);
-      color:#fff;
-      font-size:10px;
-      font-weight:800;
-      letter-spacing:.08em;
-    }
-
-    .side-bianco{ background:var(--bianco); }
-    .side-rosso{ background:var(--rosso); }
-
-    .section{
-      padding:86px 0;
-    }
-
-    .section.alt{
-      background:rgba(255,255,255,.36);
-      border-top:1px solid var(--border);
-      border-bottom:1px solid var(--border);
-    }
-
-    .section-head{
-      max-width:760px;
-      margin-bottom:32px;
-    }
-
-    h2{
-      font-size:42px;
-      line-height:1.08;
-      margin-top:8px;
-    }
-
-    .section-head p{
-      margin-top:18px;
-      font-size:17px;
-      line-height:1.8;
-      color:var(--muted);
-    }
-
-    .story-grid{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:28px;
-      align-items:stretch;
-    }
-
+    .brand-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:stretch}
     .card{
-      background:rgba(255,255,255,.62);
-      border:1px solid var(--border);
-      border-radius:28px;
-      padding:28px;
-      box-shadow:0 14px 40px rgba(15,49,66,.06);
+      background:rgba(255,255,255,.62);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:0 14px 40px rgba(0,42,57,.07)
     }
+    .wave-card{overflow:hidden;min-height:420px;display:flex}
+    .wave-card img{width:100%;height:100%;object-fit:cover}
+    .story-card{padding:30px}
+    .story-card p{font-size:17px;line-height:1.88;color:var(--muted)}
+    .story-card p + p{margin-top:18px}
+    .mini-logo{margin-top:22px;max-width:320px}
 
-    .pattern-card{
-      min-height:340px;
-      background:
-        linear-gradient(rgba(255,255,255,.10), rgba(255,255,255,.10)),
-        linear-gradient(135deg, var(--sand) 25%, transparent 25%) -12px 0/24px 24px,
-        linear-gradient(225deg, var(--sand) 25%, transparent 25%) -12px 0/24px 24px,
-        linear-gradient(315deg, var(--sand) 25%, transparent 25%) 0px 0/24px 24px,
-        linear-gradient(45deg, var(--sand) 25%, transparent 25%) 0px 0/24px 24px,
-        var(--navy);
-      display:flex;
-      align-items:flex-end;
-      color:var(--white);
-    }
-
-    .pattern-card h3{
-      font-size:34px;
-      line-height:1.05;
-      max-width:300px;
-    }
-
-    .text-block{
-      font-size:17px;
-      line-height:1.85;
-      color:var(--muted);
-    }
-
-    .text-block p + p{
-      margin-top:18px;
-    }
-
-    .products{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-      margin-top:28px;
-    }
-
-    .product{
-      overflow:hidden;
-      padding:0;
-    }
-
-    .product-top{
-      padding:28px 28px 18px;
-    }
-
+    .products{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .product{overflow:hidden}
+    .product-top{padding:30px 30px 20px}
     .pill{
-      display:inline-block;
-      font-size:12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-weight:700;
-      padding:8px 10px;
-      border-radius:999px;
-      margin-bottom:16px;
+      display:inline-block;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:700;
+      letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px
     }
-
-    .pill-rosso{
-      background:rgba(233,106,90,.14);
-      color:#9c3d31;
-    }
-
-    .pill-bianco{
-      background:rgba(213,166,59,.18);
-      color:#8f6a11;
-    }
-
-    .product h3{
-      font-size:30px;
-      margin-bottom:10px;
-    }
-
-    .product p{
-      color:var(--muted);
-      line-height:1.8;
-      font-size:16px;
-    }
-
+    .pill.rosso{background:rgba(237,82,64,.14);color:#a33c2f}
+    .pill.bianco{background:rgba(213,154,44,.18);color:#8a650f}
+    .product h3{font-size:30px;margin-bottom:10px}
+    .product p{font-size:16px;line-height:1.82;color:var(--muted)}
+    .product-logo{margin-top:18px;max-width:290px}
     .product-visual{
-      min-height:260px;
-      border-top:1px solid var(--border);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-      background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.5));
+      background:linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.48));
+      border-top:1px solid var(--border);padding:24px 24px 18px;display:flex;align-items:flex-end;justify-content:center;min-height:460px
     }
+    .product-visual img{height:400px;width:auto;object-fit:contain}
 
-    .serve-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-      margin-top:30px;
-    }
-
-    .serve-card h3{
-      font-size:22px;
-      margin-bottom:12px;
-    }
-
-    .serve-card p{
-      font-size:15px;
-      line-height:1.8;
-      color:var(--muted);
-    }
+    .serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+    .serve-card{padding:26px}
+    .serve-card h3{font-size:22px;margin-bottom:12px}
+    .serve-card p{font-size:15px;line-height:1.82;color:var(--muted)}
 
     .cta{
-      background:var(--navy);
-      color:var(--white);
-      border-radius:34px;
-      padding:42px;
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:20px;
-      align-items:center;
-      box-shadow:0 18px 45px rgba(15,49,66,.18);
+      border-radius:34px;background:var(--navy);color:white;padding:42px;
+      display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;box-shadow:0 18px 45px rgba(0,42,57,.22)
     }
+    .cta p{margin-top:12px;max-width:700px;color:rgba(255,255,255,.78);line-height:1.82}
 
-    .cta p{
-      margin-top:10px;
-      color:rgba(255,255,255,.78);
-      line-height:1.8;
-    }
-
-    .footer{
-      padding:28px 0 42px;
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-      border-top:1px solid var(--border);
-      padding-top:24px;
-    }
+    .footer{padding:28px 0 44px;color:var(--muted);font-size:14px}
+    .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:24px}
 
     @media (max-width: 980px){
-      .hero-grid,
-      .story-grid,
-      .cta{
-        grid-template-columns:1fr;
-      }
-
-      h1{
-        font-size:48px;
-      }
-
-      h2{
-        font-size:34px;
-      }
-
-      .serve-grid{
-        grid-template-columns:1fr;
-      }
+      .hero-grid,.brand-grid,.cta{grid-template-columns:1fr}
+      .serve-grid{grid-template-columns:1fr}
     }
-
     @media (max-width: 760px){
-      .nav{
-        display:none;
-      }
-
-      .products{
-        grid-template-columns:1fr;
-      }
-
-      .hero{
-        padding-top:56px;
-      }
-
-      h1{
-        font-size:40px;
-      }
-
-      .hero p,
-      .section-head p,
-      .text-block{
-        font-size:16px;
-      }
-
-      .hero-card{
-        min-height:auto;
-      }
-
-      .wave-art{
-        height:340px;
-      }
-
-      .bottle{
-        width:104px;
-        height:270px;
-      }
-
-      .bottle::before{
-        left:28px;
-        width:48px;
-      }
-
-      .cap{
-        left:29px;
-        width:46px;
-      }
-
-      .cta{
-        padding:30px;
-      }
+      .nav{display:none}
+      .products{grid-template-columns:1fr}
+      .topbar-inner{min-height:70px}
+      .brand-lockup img{height:42px}
+      .hero{padding-top:46px}
+      .hero-copy p,.section-head p,.story-card p{font-size:16px}
+      .product-visual{min-height:400px}
+      .product-visual img{height:340px}
+      .cta{padding:30px}
     }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="container topbar-inner">
-      <div class="brand">
-        <div class="brand-mark"></div>
-        <span>MARVENTO VERMUT</span>
+      <div class="brand-lockup">
+        <img src="assets/logo-rosso.png" alt="Marvento Rosso" />
       </div>
       <nav class="nav">
         <a href="#marca">La marca</a>
@@ -590,45 +171,20 @@
 
   <section class="hero">
     <div class="container hero-grid">
-      <div>
+      <div class="hero-copy">
         <span class="eyebrow">Aperitivo argentino</span>
         <h1>El vermut del Atlántico.</h1>
         <p>
-          Marvento nace del encuentro entre la tradición italiana del vermut y el carácter del mar.
-          Una marca con identidad fuerte, espíritu costero y una mirada contemporánea del aperitivo.
+          Marvento une la tradición italiana del vermut con el carácter del mar. Una identidad fuerte,
+          costera y contemporánea, pensada para una marca de aperitivo con presencia real.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#productos">Descubrir productos</a>
-          <a class="btn btn-secondary" href="#marca">Conocer la marca</a>
+          <a class="btn primary" href="#productos">Descubrir productos</a>
+          <a class="btn secondary" href="#marca">Conocer la marca</a>
         </div>
       </div>
-
-      <div class="hero-card">
-        <div class="wave-art">
-          <div class="bottles">
-            <div class="bottle">
-              <div class="cap cap-bianco"></div>
-              <div class="label">
-                <div class="label-top">MARVENTO</div>
-                <div class="label-main">
-                  <div class="label-wave"></div>
-                  <div class="label-side side-bianco">BIANCO</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="bottle">
-              <div class="cap cap-rosso"></div>
-              <div class="label">
-                <div class="label-top">MARVENTO</div>
-                <div class="label-main">
-                  <div class="label-wave"></div>
-                  <div class="label-side side-rosso">ROSSO</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="hero-visual">
+        <img src="assets/bottles-pair.png" alt="Botellas Marvento Bianco y Marvento Rosso" />
       </div>
     </div>
   </section>
@@ -639,27 +195,25 @@
         <span class="eyebrow">La marca</span>
         <h2>Italia, Atlántico y una identidad visual con carácter.</h2>
         <p>
-          Marvento se presenta con una estética inspirada en el diseño italiano de los años 60, con
-          una marca gráfica robusta, atemporal y elegante. El universo visual se completa con el mar,
-          las olas y el viento como símbolos de origen e identidad.
+          Esta versión del sitio toma la ola, la paleta y la gráfica principal del sistema de marca para
+          construir una presencia online coherente desde el primer día.
         </p>
       </div>
 
-      <div class="story-grid">
-        <div class="card pattern-card">
-          <h3>Mar + viento. Un nombre con origen y dirección.</h3>
+      <div class="brand-grid">
+        <div class="card wave-card">
+          <img src="assets/wave.png" alt="Ilustración de ola Marvento" />
         </div>
-
-        <div class="card text-block">
+        <div class="card story-card">
           <p>
-            La marca une la herencia del aperitivo clásico con una lectura contemporánea, vinculada a
-            la costa y al encuentro. Ese cruce entre tradición italiana y espíritu atlántico es uno de
-            los ejes centrales del proyecto visual.
+            Marvento se apoya en una marca gráfica de inspiración italiana de los años 60, con una tipografía
+            robusta, presencia fuerte y un lenguaje visual que une el mar, el viento y el ritual del aperitivo.
           </p>
           <p>
-            Esta primera versión del sitio toma esas claves para construir una presencia digital sobria,
-            cálida y premium, lista para seguir creciendo con fotos y material final.
+            En esta etapa usamos las piezas reales del sistema visual para que la web respire exactamente el mismo
+            universo gráfico del proyecto de marca.
           </p>
+          <img class="mini-logo" src="assets/logo-bianco.png" alt="Logo Marvento Bianco" />
         </div>
       </div>
     </div>
@@ -671,55 +225,39 @@
         <span class="eyebrow">Productos</span>
         <h2>Dos expresiones. Una misma identidad.</h2>
         <p>
-          La línea actual de Marvento se compone de dos variedades: Rosso y Bianco. Dos perfiles
-          distintos, pensados para distintos momentos del aperitivo, con una identidad visual sólida y reconocible.
+          La línea principal está compuesta por Marvento Rosso y Marvento Bianco, presentados con la gráfica,
+          el color y la construcción visual del sistema original.
         </p>
       </div>
 
       <div class="products">
         <article class="card product">
           <div class="product-top">
-            <span class="pill pill-rosso">Rosso</span>
+            <span class="pill rosso">Rosso</span>
             <h3>Marvento Rosso</h3>
             <p>
-              Más intenso, con carácter y presencia en copa. Una opción ideal para el aperitivo clásico,
-              para tomar con hielo y cítrico o como base de cocktails de perfil más profundo.
+              Vermut con más carácter, profundidad y presencia en copa. Ideal para un aperitivo clásico,
+              con hielo y cítrico, o para cócteles de perfil más intenso.
             </p>
+            <img class="product-logo" src="assets/logo-rosso.png" alt="Logo Marvento Rosso" />
           </div>
           <div class="product-visual">
-            <div class="bottle">
-              <div class="cap cap-rosso"></div>
-              <div class="label">
-                <div class="label-top">MARVENTO</div>
-                <div class="label-main">
-                  <div class="label-wave"></div>
-                  <div class="label-side side-rosso">ROSSO</div>
-                </div>
-              </div>
-            </div>
+            <img src="assets/bottle-rosso.png" alt="Botella Marvento Rosso" />
           </div>
         </article>
 
         <article class="card product">
           <div class="product-top">
-            <span class="pill pill-bianco">Bianco</span>
+            <span class="pill bianco">Bianco</span>
             <h3>Marvento Bianco</h3>
             <p>
-              Más fresco, aromático y amable. Ideal para un servicio liviano, con mucho hielo, soda,
-              tónica o en preparaciones más refrescantes para el aperitivo.
+              Una expresión más fresca, aromática y amable. Pensada para un servicio liviano, con mucho hielo,
+              soda o tónica, y una lectura más refrescante del aperitivo.
             </p>
+            <img class="product-logo" src="assets/logo-bianco.png" alt="Logo Marvento Bianco" />
           </div>
           <div class="product-visual">
-            <div class="bottle">
-              <div class="cap cap-bianco"></div>
-              <div class="label">
-                <div class="label-top">MARVENTO</div>
-                <div class="label-main">
-                  <div class="label-wave"></div>
-                  <div class="label-side side-bianco">BIANCO</div>
-                </div>
-              </div>
-            </div>
+            <img src="assets/bottle-bianco.png" alt="Botella Marvento Bianco" />
           </div>
         </article>
       </div>
@@ -732,29 +270,22 @@
         <span class="eyebrow">Cómo tomarlo</span>
         <h2>Un ritual simple, fresco y elegante.</h2>
         <p>
-          Marvento está pensado para disfrutarse con mucho hielo, buena cristalería y una rodaja cítrica.
-          Una forma contemporánea de volver al ritual del aperitivo.
+          Marvento está pensado para disfrutarse con mucho hielo, buena cristalería y un servicio prolijo.
         </p>
       </div>
 
       <div class="serve-grid">
         <div class="card serve-card">
           <h3>Marvento + soda</h3>
-          <p>
-            Mucho hielo, Marvento y soda bien fría. Simple, refrescante y perfecto para el comienzo de la noche.
-          </p>
+          <p>Una forma limpia y refrescante de abrir el aperitivo, ideal para un perfil más liviano.</p>
         </div>
         <div class="card serve-card">
           <h3>Marvento Spritz</h3>
-          <p>
-            Una opción más liviana y festiva, ideal para encuentros, barras y momentos de aperitivo al atardecer.
-          </p>
+          <p>Una lectura más festiva y contemporánea, pensada para encuentros, barras y atardeceres.</p>
         </div>
         <div class="card serve-card">
           <h3>Con tónica y cítrico</h3>
-          <p>
-            Una lectura más moderna, aromática y actual, pensada para quienes buscan un servicio fresco y elegante.
-          </p>
+          <p>Un servicio moderno y aromático, con mucha frescura y una presencia visual muy cuidada.</p>
         </div>
       </div>
     </div>
@@ -764,15 +295,15 @@
     <div class="container">
       <div class="cta">
         <div>
-          <span class="eyebrow" style="color:#ffffff;">Marvento Vermut</span>
-          <h2 style="margin-top:0;">Una primera presencia online, lista para crecer.</h2>
+          <span class="eyebrow" style="color:#fff">Marvento Vermut</span>
+          <h2 style="margin-top:0">Base visual lista para crecer.</h2>
           <p>
-            Esta versión inicial ya deja a Marvento online con una base profesional. En la próxima etapa
-            podemos sumar botellas reales, logo final, Instagram, WhatsApp, puntos de venta y contacto comercial.
+            Ya queda alineada con la marca real. En la siguiente etapa sumamos contacto comercial, Instagram,
+            WhatsApp, puntos de venta y cualquier ajuste fino que quieras en textos y estructura.
           </p>
         </div>
         <div>
-          <a class="btn btn-secondary" style="border-color:#ffffff; color:#ffffff;" href="mailto:hola@marventovermut.com">Contacto</a>
+          <a class="btn secondary" style="border-color:#fff;color:#fff" href="mailto:hola@marventovermut.com">Contacto</a>
         </div>
       </div>
     </div>
