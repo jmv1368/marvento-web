@@ -1,25 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marvento Vermut</title>
+
 <style>
 body{
-margin:0;
-background:#efe5c8;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+  margin:0;
+  background:#efe5c8;
+  color:#0c3344;
+  font-family: Georgia, serif;
+  text-align:center;
 }
-img{
-max-width:90%;
-max-height:90vh;
+
+main{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:30px;
+}
+
+.logo{
+  max-width:420px;
+  width:80%;
+  margin-bottom:45px;
+}
+
+h1{
+  font-size:42px;
+  line-height:1.15;
+  font-weight:400;
+  margin:0 0 45px;
+}
+
+.photo{
+  max-width:720px;
+  width:90%;
+  border-radius:22px;
+}
+
+@media(max-width:700px){
+  h1{font-size:30px;}
 }
 </style>
 </head>
+
 <body>
-<img src="proximamente.jpg" alt="Marvento Próximamente">
+<main>
+
+  <img class="logo" src="COMP.B1.png" alt="Marvento">
+
+  <h1>
+    No todo nace en tierra firme.<br>
+    Algunas historias empiezan mar adentro.
+  </h1>
+
+  <img class="photo" src="foto.png" alt="Marvento Vermut">
+
+</main>
 </body>
 </html>
